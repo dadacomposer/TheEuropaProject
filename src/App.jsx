@@ -5,7 +5,6 @@ import Films from './components/Films';
 import Community from './components/Community';
 import PartnersPress from './components/PartnersPress';
 import assetData from './data/cloudinary-assets.json';
-import IntroScreen from './components/IntroScreen';
 import MobileSimulator from './components/MobileSimulator';
 
 function App() {
@@ -16,9 +15,6 @@ function App() {
   }
 
   const [activePage, setActivePage] = useState('mission');
-  const [showIntro, setShowIntro] = useState(() => {
-    return !sessionStorage.getItem('visitedEuropa');
-  });
   const [activeModal, setActiveModal] = useState(null); // 'privacy' | 'terms' | 'cookies' | null
   const [showCookieBanner, setShowCookieBanner] = useState(() => {
     return !localStorage.getItem('cookieConsent');
@@ -88,15 +84,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {showIntro && (
-        <IntroScreen 
-          logoUrl={assetData.logo} 
-          onComplete={() => {
-            setShowIntro(false);
-            sessionStorage.setItem('visitedEuropa', 'true');
-          }} 
-        />
-      )}
       {/* Ambient background glows */}
       <div className="nebula-glow nebula-1" />
       <div className="nebula-glow nebula-2" />
@@ -425,7 +412,7 @@ function App() {
       )}
 
       {/* Cookie Consent Banner */}
-      {!showIntro && showCookieBanner && (
+      {showCookieBanner && (
         <div className="cookie-banner">
           <div className="cookie-content">
             <h4 className="cookie-title">We value your privacy</h4>

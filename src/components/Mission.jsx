@@ -164,8 +164,8 @@ export default function Mission({ setActivePage }) {
               />
             ) : (
               <img
-                src={assets.trailer.replace('.mp4', '.jpg')}
-                alt="The Europa Project background"
+                src="https://res.cloudinary.com/djy1yx724/image/upload/v1781480665/europa-project/P1000660.jpg"
+                alt="The Europa Project background fallback"
                 style={{
                   position: 'absolute',
                   top: 0,
