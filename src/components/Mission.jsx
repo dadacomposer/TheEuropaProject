@@ -119,7 +119,7 @@ export default function Mission({ setActivePage }) {
     }
   };
 
-  const heroOpacity = Math.max(0, 1 - scrollY / 400);
+  const heroOpacity = isMobile ? 1 : Math.max(0, 1 - scrollY / 400);
   const headerOpacity = Math.min(1, Math.max(0, (scrollY - 100) / 300));
   const translateY = Math.max(0, 20 * (1 - headerOpacity));
 
@@ -134,9 +134,9 @@ export default function Mission({ setActivePage }) {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'flex-start',
-        padding: '140px 8% 80px 8%'
+        justifyContent: isMobile ? 'flex-start' : 'flex-end',
+        alignItems: isMobile ? 'center' : 'flex-start',
+        padding: isMobile ? '160px 5% 40px 5%' : '140px 8% 80px 8%'
       }}>
         {/* Background Video (acting as a background canvas, not interactive) */}
         {assets.trailer ? (
@@ -222,16 +222,18 @@ export default function Mission({ setActivePage }) {
           zIndex: 2, 
           width: '100%',
           display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: isMobile ? 'flex-start' : 'space-between',
+          alignItems: isMobile ? 'center' : 'flex-end',
+          textAlign: isMobile ? 'center' : 'left',
           flexWrap: 'wrap',
-          gap: '32px',
+          gap: isMobile ? '24px' : '32px',
           opacity: heroOpacity,
-          pointerEvents: scrollY >= 400 ? 'none' : 'auto',
+          pointerEvents: (isMobile || scrollY < 400) ? 'auto' : 'none',
           transition: 'opacity 0.05s linear'
         }}>
           <h1 style={{ 
-            fontSize: '4.25rem', 
+            fontSize: isMobile ? '3rem' : '4.25rem', 
             fontFamily: 'var(--font-title)', 
             color: '#0f172a',
             fontWeight: 800,
