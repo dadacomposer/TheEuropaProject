@@ -524,25 +524,14 @@ export default function Navbar({ activePage, setActivePage }) {
                     className="reel-card"
                     title="View on Instagram"
                   >
-                    <video
-                      src={reel.video}
-                      poster={reel.poster}
-                      muted
-                      playsInline
-                      loop
-                      preload="metadata"
+                    <img
+                      src={reel.poster}
+                      alt="Instagram Reel"
                       style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
                         display: 'block'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.play().catch(() => {});
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.pause();
-                        e.currentTarget.currentTime = 0;
                       }}
                     />
                     <div className="reel-overlay" />
