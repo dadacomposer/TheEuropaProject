@@ -6,31 +6,31 @@ const REELS = [
     id: 1,
     url: "https://www.instagram.com/p/DZITJcHRcsU/",
     video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468829/europa-project/reels/reel_1.mp4",
-    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469344/europa-project/reels/reel_1_thumb.jpg"
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781475235/europa-project/reels/reel_1_actual_thumb.jpg"
   },
   {
     id: 2,
     url: "https://www.instagram.com/reel/DYm0z22hQXs/",
     video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468835/europa-project/reels/reel_2.mp4",
-    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469346/europa-project/reels/reel_2_thumb.jpg"
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781475235/europa-project/reels/reel_2_actual_thumb.jpg"
   },
   {
     id: 3,
     url: "https://www.instagram.com/reel/DYUzMPoSipb/",
     video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468849/europa-project/reels/reel_3.mp4",
-    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469347/europa-project/reels/reel_3_thumb.png"
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781475236/europa-project/reels/reel_3_actual_thumb.jpg"
   },
   {
     id: 4,
     url: "https://www.instagram.com/reel/DWWvILaOwAR/",
     video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468857/europa-project/reels/reel_4.mp4",
-    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469348/europa-project/reels/reel_4_thumb.png"
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781475237/europa-project/reels/reel_4_actual_thumb.jpg"
   },
   {
     id: 5,
     url: "https://www.instagram.com/reel/DWRllGGuM5Z/",
     video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468863/europa-project/reels/reel_5.mp4",
-    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469349/europa-project/reels/reel_5_thumb.png"
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781475238/europa-project/reels/reel_5_actual_thumb.jpg"
   }
 ];
 
