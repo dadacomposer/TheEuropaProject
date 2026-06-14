@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import assetData from '../data/cloudinary-assets.json';
 
 const REELS = [
@@ -38,6 +38,8 @@ export default function Mission({ setActivePage }) {
   const [scrollY, setScrollY] = useState(0);
   const [videoStarted, setVideoStarted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
+  const videoRef = useRef(null);
   
   const assets = assetData;
 
@@ -68,6 +70,26 @@ export default function Mission({ setActivePage }) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Detect if the browser blocks autoplay (e.g. Low Power Mode on iOS/Safari)
+  useEffect(() => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Autoplay succeeded!
+            setVideoStarted(true);
+          })
+          .catch((error) => {
+            // Autoplay failed or was blocked by the browser/system
+            console.warn("Hero background video autoplay blocked:", error);
+            setAutoplayBlocked(true);
+            setVideoStarted(true); // Fade out the white mask to reveal the fallback static image
+          });
+      }
+    }
+  }, [assets.trailer]);
 
   // Safety fallback: if video doesn't play within 2.5s, fade out the mask anyway
   useEffect(() => {
@@ -119,25 +141,43 @@ export default function Mission({ setActivePage }) {
         {/* Background Video (acting as a background canvas, not interactive) */}
         {assets.trailer ? (
           <>
-            <video
-              src={getOptimizedVideoUrl(assets.trailer)}
-              autoPlay
-              loop
-              muted
-              playsInline
-              onTimeUpdate={handleTimeUpdate}
-              onPlaying={() => setVideoStarted(true)}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: isMobile ? '100%' : '140%',
-                objectFit: 'cover',
-                zIndex: 0,
-                pointerEvents: 'none'
-              }}
-            />
+            {!autoplayBlocked ? (
+              <video
+                ref={videoRef}
+                src={getOptimizedVideoUrl(assets.trailer)}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onTimeUpdate={handleTimeUpdate}
+                onPlaying={() => setVideoStarted(true)}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: isMobile ? '100%' : '140%',
+                  objectFit: 'cover',
+                  zIndex: 0,
+                  pointerEvents: 'none'
+                }}
+              />
+            ) : (
+              <img
+                src={assets.trailer.replace('.mp4', '.jpg')}
+                alt="The Europa Project background"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  zIndex: 0,
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
             {/* White mask that covers the video until it starts playing */}
             <div style={{
               position: 'absolute',
