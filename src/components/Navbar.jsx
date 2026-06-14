@@ -5,27 +5,27 @@ const REELS = [
   {
     id: 1,
     url: "https://www.instagram.com/p/DZITJcHRcsU/",
-    video: "/instagram/reel_1.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468829/europa-project/reels/reel_1.mp4"
   },
   {
     id: 2,
     url: "https://www.instagram.com/reel/DYm0z22hQXs/",
-    video: "/instagram/reel_2.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468835/europa-project/reels/reel_2.mp4"
   },
   {
     id: 3,
     url: "https://www.instagram.com/reel/DYUzMPoSipb/",
-    video: "/instagram/reel_3.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468849/europa-project/reels/reel_3.mp4"
   },
   {
     id: 4,
     url: "https://www.instagram.com/reel/DWWvILaOwAR/",
-    video: "/instagram/reel_4.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468857/europa-project/reels/reel_4.mp4"
   },
   {
     id: 5,
     url: "https://www.instagram.com/reel/DWRllGGuM5Z/",
-    video: "/instagram/reel_5.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468863/europa-project/reels/reel_5.mp4"
   }
 ];
 
