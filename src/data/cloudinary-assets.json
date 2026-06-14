@@ -1,0 +1,32 @@
+{
+  "trailer": "https://res.cloudinary.com/djy1yx724/video/upload/v1781432939/europa-project/europa_trailer.mp4",
+  "crew": [
+    {
+      "name": "rowena",
+      "url": "https://res.cloudinary.com/djy1yx724/image/upload/v1781432941/europa-project/crew/rowena.png"
+    },
+    {
+      "name": "crew_1",
+      "url": "https://res.cloudinary.com/djy1yx724/image/upload/v1781432942/europa-project/crew/crew_1.png"
+    },
+    {
+      "name": "crew_2",
+      "url": "https://res.cloudinary.com/djy1yx724/image/upload/v1781432943/europa-project/crew/crew_2.png"
+    },
+    {
+      "name": "crew_3",
+      "url": "https://res.cloudinary.com/djy1yx724/image/upload/v1781432944/europa-project/crew/crew_3.png"
+    }
+  ],
+  "logos": {
+    "act_government": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449483/europa-project/logos/act_government.png",
+    "go2025_nova_gorica": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449484/europa-project/logos/go2025_nova_gorica.png",
+    "rtv_slo": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449485/europa-project/logos/rtv_slo.png",
+    "walk_of_peace": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449487/europa-project/logos/walk_of_peace.png",
+    "ulvang": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449488/europa-project/logos/ulvang.png",
+    "durston": "https://res.cloudinary.com/djy1yx724/image/upload/v1781449491/europa-project/logos/durston.png"
+  },
+  "logo": "https://res.cloudinary.com/djy1yx724/image/upload/v1781433775/europa-project/europa_project_logo.png",
+  "team": "https://res.cloudinary.com/djy1yx724/image/upload/v1781441166/europa-project/team_photo.jpg",
+  "crewPhotoP1000814": "https://res.cloudinary.com/djy1yx724/image/upload/v1781456773/europa-project/crew_photo_p1000814.jpg"
+}
