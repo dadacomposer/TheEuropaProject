@@ -51,15 +51,12 @@ export default function Mission({ setActivePage }) {
   }, []);
 
   // Helper to optimize Cloudinary video URLs dynamically
-  const getOptimizedVideoUrl = (url, isMobileDevice) => {
+  const getOptimizedVideoUrl = (url) => {
     if (!url) return '';
     if (url.includes('cloudinary.com') && url.includes('/video/upload/')) {
       const parts = url.split('/video/upload/');
-      // On mobile, request max 1080px width, limit quality and optimize format dynamically
-      const transform = isMobileDevice 
-        ? 'f_auto,q_auto:best,w_1080,c_limit' 
-        : 'f_auto,q_auto:best';
-      return `${parts[0]}/video/upload/${transform}/${parts[1]}`;
+      // Use the fully-cached best quality transformation to ensure byte-range request support on mobile devices
+      return `${parts[0]}/video/upload/f_auto,q_auto:best/${parts[1]}`;
     }
     return url;
   };
@@ -123,7 +120,7 @@ export default function Mission({ setActivePage }) {
         {assets.trailer ? (
           <>
             <video
-              src={getOptimizedVideoUrl(assets.trailer, isMobile)}
+              src={getOptimizedVideoUrl(assets.trailer)}
               autoPlay
               loop
               muted
