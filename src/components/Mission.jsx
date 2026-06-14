@@ -5,27 +5,32 @@ const REELS = [
   {
     id: 1,
     url: "https://www.instagram.com/p/DZITJcHRcsU/",
-    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468829/europa-project/reels/reel_1.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468829/europa-project/reels/reel_1.mp4",
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469344/europa-project/reels/reel_1_thumb.jpg"
   },
   {
     id: 2,
     url: "https://www.instagram.com/reel/DYm0z22hQXs/",
-    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468835/europa-project/reels/reel_2.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468835/europa-project/reels/reel_2.mp4",
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469346/europa-project/reels/reel_2_thumb.jpg"
   },
   {
     id: 3,
     url: "https://www.instagram.com/reel/DYUzMPoSipb/",
-    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468849/europa-project/reels/reel_3.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468849/europa-project/reels/reel_3.mp4",
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469347/europa-project/reels/reel_3_thumb.png"
   },
   {
     id: 4,
     url: "https://www.instagram.com/reel/DWWvILaOwAR/",
-    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468857/europa-project/reels/reel_4.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468857/europa-project/reels/reel_4.mp4",
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469348/europa-project/reels/reel_4_thumb.png"
   },
   {
     id: 5,
     url: "https://www.instagram.com/reel/DWRllGGuM5Z/",
-    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468863/europa-project/reels/reel_5.mp4"
+    video: "https://res.cloudinary.com/djy1yx724/video/upload/f_auto,q_auto/v1781468863/europa-project/reels/reel_5.mp4",
+    poster: "https://res.cloudinary.com/djy1yx724/image/upload/f_auto,q_auto/v1781469349/europa-project/reels/reel_5_thumb.png"
   }
 ];
 
@@ -676,6 +681,7 @@ export default function Mission({ setActivePage }) {
                 >
                   <video
                     src={reel.video}
+                    poster={reel.poster}
                     muted
                     playsInline
                     loop
