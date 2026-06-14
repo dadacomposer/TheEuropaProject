@@ -371,8 +371,19 @@ export default function Mission({ setActivePage }) {
 
           <div className="cinematic-grid">
             {/* Left Column: Video Preview */}
-            <div className="cinematic-video-preview">
-              {assets.trailer ? (
+            <div 
+              className="cinematic-video-preview"
+              onClick={() => setActivePage('films')}
+              style={{ cursor: 'pointer' }}
+              title="Watch Trailer"
+            >
+              {isMobile ? (
+                <img
+                  src="https://res.cloudinary.com/djy1yx724/image/upload/v1781480665/europa-project/P1000660.jpg"
+                  alt="Chapter 1: The Walk of Peace Preview"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              ) : assets.trailer ? (
                 <video
                   src={assets.trailer}
                   autoPlay
@@ -380,6 +391,9 @@ export default function Mission({ setActivePage }) {
                   muted
                   playsInline
                   style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
                     pointerEvents: 'none'
                   }}
                 />
