@@ -376,7 +376,8 @@ export default function Films({ setActivePage }) {
                 height: '100%',
                 objectFit: 'cover',
                 filter: 'blur(80px) saturate(1.7) brightness(1.05)',
-                opacity: 0.42,
+                opacity: (videoStarted && isPlaying) ? 0.42 : 0,
+                transition: 'opacity 1s ease-in-out',
                 transform: 'scale(1.2) translate3d(0, 0, 0)', // Force GPU layering
                 willChange: 'transform'
               }}
