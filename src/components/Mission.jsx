@@ -211,7 +211,9 @@ export default function Mission({ setActivePage }) {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 10%, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.02) 70%, rgba(255, 255, 255, 0) 100%)',
+          background: isMobile 
+            ? 'linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 30%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0) 100%)'
+            : 'linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.85) 10%, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0.15) 45%, rgba(255, 255, 255, 0.02) 70%, rgba(255, 255, 255, 0) 100%)',
           zIndex: 1,
           pointerEvents: 'none'
         }} />
