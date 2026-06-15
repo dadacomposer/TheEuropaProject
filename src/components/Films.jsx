@@ -186,6 +186,11 @@ export default function Films({ setActivePage }) {
 
   const handleCardClick = (e) => {
     if (isFocused) {
+      const isMobileDevice = window.innerWidth <= 768 || window.innerHeight <= 480;
+      if (isMobileDevice && !showControls) {
+        handleMouseMove();
+        return;
+      }
       // Toggle play/pause when in active watch mode
       togglePlay(e);
       return;
@@ -325,12 +330,23 @@ export default function Films({ setActivePage }) {
   };
 
   const toggleFullscreen = (e) => {
-    e.stopPropagation();
-    if (!cardRef.current) return;
-    if (!document.fullscreenElement) {
-      cardRef.current.requestFullscreen().catch(err => console.log('Fullscreen failed:', err));
+    if (e) e.stopPropagation();
+    const isMobileDevice = window.innerWidth <= 768 || window.innerHeight <= 480;
+
+    if (isMobileDevice) {
+      if (videoRef.current) {
+        if (videoRef.current.webkitEnterFullscreen) {
+          videoRef.current.webkitEnterFullscreen();
+        } else if (videoRef.current.requestFullscreen) {
+          videoRef.current.requestFullscreen();
+        }
+      }
     } else {
-      document.exitFullscreen();
+      if (!document.fullscreenElement) {
+        cardRef.current.requestFullscreen().catch(err => console.log('Fullscreen failed:', err));
+      } else {
+        document.exitFullscreen();
+      }
     }
   };
 
@@ -449,9 +465,11 @@ export default function Films({ setActivePage }) {
         >
           <div 
             ref={cardRef}
-            className="video-player-card"
-            onMouseMove={handleMouseMove}
+            className={`films-cinematic-card ${isFocused ? 'watch-mode' : ''}`}
             onClick={handleCardClick}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleMouseMove}
+            onMouseLeave={() => isFocused && !videoRef.current?.paused && setShowControls(false)}
             style={{ 
               position: 'relative',
               width: '100%',

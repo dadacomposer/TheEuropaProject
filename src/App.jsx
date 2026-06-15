@@ -14,7 +14,14 @@ function App() {
     return <MobileSimulator />;
   }
 
-  const [activePage, setActivePage] = useState('mission');
+  const [activePage, setActivePage] = useState(() => {
+    return sessionStorage.getItem('activePage') || 'mission';
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('activePage', activePage);
+  }, [activePage]);
+
   const [activeModal, setActiveModal] = useState(null); // 'privacy' | 'terms' | 'cookies' | null
   const [showCookieBanner, setShowCookieBanner] = useState(() => {
     return !localStorage.getItem('cookieConsent');
