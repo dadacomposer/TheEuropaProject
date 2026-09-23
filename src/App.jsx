@@ -33,11 +33,7 @@ function UnderDevelopmentGate({ onAccessGranted }) {
 
       <section className="development-gate-card" aria-labelledby="development-gate-title">
         <div className="development-gate-brand">
-          {assetData.logo ? (
-            <img src={assetData.logo} alt="The Europa Project" />
-          ) : (
-            <span>The Europa Project</span>
-          )}
+          <img src="/favicon.svg" alt="The Europa Project" />
         </div>
 
         <span className="section-tag development-gate-tag">In development</span>
