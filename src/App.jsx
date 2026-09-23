@@ -7,12 +7,80 @@ import PartnersPress from './components/PartnersPress';
 import assetData from './data/cloudinary-assets.json';
 import MobileSimulator from './components/MobileSimulator';
 
-function App() {
-  const isSimulator = new URLSearchParams(window.location.search).get('simulator') === 'true';
+const OWNER_PASSWORD = 'sfdfuhbo3487sd34u8sdfsuhiw_36y';
 
-  if (isSimulator) {
-    return <MobileSimulator />;
-  }
+function UnderDevelopmentGate({ onAccessGranted }) {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password !== OWNER_PASSWORD) {
+      setError('The password is not recognised. Please try again.');
+      return;
+    }
+
+    sessionStorage.setItem('europaOwnerAccess', 'granted');
+    onAccessGranted();
+  };
+
+  return (
+    <main className="development-gate">
+      <div className="development-gate-glow development-gate-glow-one" />
+      <div className="development-gate-glow development-gate-glow-two" />
+
+      <section className="development-gate-card" aria-labelledby="development-gate-title">
+        <div className="development-gate-brand">
+          {assetData.logo ? (
+            <img src={assetData.logo} alt="The Europa Project" />
+          ) : (
+            <span>The Europa Project</span>
+          )}
+        </div>
+
+        <span className="section-tag development-gate-tag">In development</span>
+        <h1 id="development-gate-title">A new chapter is in the making.</h1>
+        <p>
+          The Europa Project website is currently being carefully rebuilt. We will be back soon.
+        </p>
+
+        {!isLoginOpen ? (
+          <button className="btn-primary development-gate-login" onClick={() => setIsLoginOpen(true)}>
+            Owner login
+          </button>
+        ) : (
+          <form className="development-gate-form" onSubmit={handleSubmit}>
+            <label className="form-label" htmlFor="owner-password">Owner password</label>
+            <input
+              id="owner-password"
+              className="form-control"
+              type="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                setError('');
+              }}
+              autoFocus
+              required
+            />
+            {error && <p className="development-gate-error" role="alert">{error}</p>}
+            <button className="btn-primary development-gate-login" type="submit">
+              Enter the website
+            </button>
+          </form>
+        )}
+      </section>
+    </main>
+  );
+}
+
+function App() {
+  const [isOwnerAccessGranted, setIsOwnerAccessGranted] = useState(() => {
+    return sessionStorage.getItem('europaOwnerAccess') === 'granted';
+  });
+  const isSimulator = new URLSearchParams(window.location.search).get('simulator') === 'true';
 
   const [activePage, setActivePage] = useState(() => {
     return sessionStorage.getItem('activePage') || 'mission';
@@ -73,6 +141,14 @@ function App() {
     // Automatically scroll to the top of the viewport on page change
     window.scrollTo(0, 0);
   }, [activePage]);
+
+  if (!isOwnerAccessGranted) {
+    return <UnderDevelopmentGate onAccessGranted={() => setIsOwnerAccessGranted(true)} />;
+  }
+
+  if (isSimulator) {
+    return <MobileSimulator />;
+  }
 
   const renderActivePage = () => {
     switch (activePage) {
